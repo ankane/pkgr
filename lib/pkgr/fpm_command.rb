@@ -38,7 +38,7 @@ module Pkgr
       list << "--before-remove" << distribution.preuninstall_file
       list << "--after-remove" << distribution.postuninstall_file
       list << "--directories" << config.directories unless config.directories.nil?
-      distribution.dependencies(config.dependencies).each{|d| list << "-d" << Shellwords.escape(d)}
+      distribution.dependencies(config.dependencies).each{|d| list << "-d" << "\"#{d}\""}
       list.compact
     end
   end
